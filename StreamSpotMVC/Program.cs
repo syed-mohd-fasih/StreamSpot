@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using StreamSpotMVC.Data;
+using StreamSpotMVC.Services;
+
 namespace StreamSpotMVC
 {
     public class Program
@@ -8,6 +12,9 @@ namespace StreamSpotMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddTransient<MoviesDirectoryService>();
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
