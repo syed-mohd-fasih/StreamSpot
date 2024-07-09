@@ -37,6 +37,16 @@ namespace StreamSpotMVC
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            // seed db
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                MoviesDirectoryService.InitializeDb(context);
+
+                var movieService = scope.ServiceProvider.GetRequiredService<MoviesDirectoryService>();
+                movieService.SyncMovies();
+            }
+
             app.Run();
         }
     }

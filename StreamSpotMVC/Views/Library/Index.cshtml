@@ -1,0 +1,16 @@
+@model IEnumerable<StreamSpotMVC.Models.Movie>
+@{
+    ViewData["Title"] = "Library";
+}
+
+<div class="text-center">
+    <h1 class="display-4">StreamSpot</h1>
+    <p>A small web app thats acts like your local little 'NetFlix'!</p>
+</div>
+
+<hr />
+
+@foreach(var movie in Model)
+{
+    <h2>@movie.Title</h2>
+}

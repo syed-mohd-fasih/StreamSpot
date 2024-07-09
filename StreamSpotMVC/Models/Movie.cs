@@ -13,5 +13,16 @@ namespace StreamSpotMVC.Models
         [JsonPropertyName("img")]
         public string Image { get; set; }
         public double Rating { get; set; }
+
+        public Movie()
+        {
+            Id = 0;
+            Year = 0;
+            Title = "";
+            Tags = [];
+            Description = "";
+            Image = "";
+            Rating = 0;
+        }
     }
 }
