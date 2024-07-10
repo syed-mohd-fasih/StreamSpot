@@ -1,0 +1,63 @@
+﻿@model StreamSpotMVC.Models.Movie
+
+<div>
+ <h4>@Model.Title</h4>
+    <hr />
+
+    <div class="card h-100 w-100" style="width: 100%">
+        <div class="row g-0">
+            <div class="overflow-hidden col-4" id="media-container">
+                <img src="@Model.Image" class="movie-image-container" alt="@Model.Title" id="movie-thumbnail">
+                <video id="movie-video" class="d-none" width="100%" height="100%" controls>
+                    <source src="/library/video/<insert path>" type="video/mp4"> @* Edit path for movie file *@
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body" id="description">
+                    <h5 class="card-title">@Model.Title</h5>
+                    <p class="card-text"><small class="text-body-secondary">@Model.Year</small></p>
+                    <p class="card-text">@String.Join(", ", Model.Tags)</p>
+                    <p class="card-text">IMDB Rating: @Model.Rating</p>
+                    <p class="card-text">Synopsis: @Model.Description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to Library</a>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const thumbnail = document.getElementById('movie-thumbnail');
+        const video = document.getElementById('movie-video');
+        const description = document.getElementById('description');
+        const main = document.getElementById('media-container');
+
+        thumbnail.addEventListener('click', function () {
+            if (video.classList.contains('d-none')) {
+                // Collapse description and expand video
+                description.style.display = 'none';
+                video.classList.remove('d-none');
+                video.classList.add('d-block');
+                video.style.width = '100%';
+                thumbnail.style.display = 'none';
+
+                if (main.classList.contains("col-4")) {
+                    main.classList.remove("col-4");
+                    main.classList.add("w-100");
+                }
+            } else {
+                // Collapse video and expand description
+                description.style.display = 'block';
+                video.classList.remove('d-block');
+                video.classList.add('d-none');
+                thumbnail.style.display = 'block';
+            }
+        }
+        );
+    });
+</script>

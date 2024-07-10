@@ -32,12 +32,23 @@ body {
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 /* Provide sufficient contrast against white background */
+.movie-image-container {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    object-fit:cover;
+}
+
+#movie-video {
+    transition: width 0.5s;
+}
+
 
 .card {
     width: 300px;
 }
 
-.card:hover {
+.card-hover-effect .card-hover-effect:hover {
     transform: scale(1.03);
     box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
 }
