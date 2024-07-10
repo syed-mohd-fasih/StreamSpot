@@ -10,7 +10,16 @@
 
 <hr />
 
-@foreach(var movie in Model)
-{
-    <h2>@movie.Title</h2>
-}
+<div class="row g-4">
+    @foreach(var movie in Model)
+    {
+    <div class="col">
+        <div class="card">
+            <img src="@movie.Image" class="card-img-top" alt="@movie.Title">
+            <div class="card-body">
+                <h4 class="card-title">@movie.Title</h4>
+            </div>
+        </div>
+    </div>
+    }
+</div>
