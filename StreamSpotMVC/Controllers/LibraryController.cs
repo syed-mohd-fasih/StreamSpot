@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Client;
 using StreamSpotMVC.Data;
 using StreamSpotMVC.Models;
 using StreamSpotMVC.Services;
@@ -17,9 +18,7 @@ namespace StreamSpotMVC.Controllers
 
         public IActionResult Index()
         {
-            var movies = _context.Movies.ToList();
-
-            return View(movies);
+            return View(_context.Movies.ToList());
         }
 
         public IActionResult Movie(int id)
@@ -50,6 +49,12 @@ namespace StreamSpotMVC.Controllers
             }
 
             return NotFound();
+        }
+
+        // Only Search by title
+        public IActionResult SearchResult(string SearchTitle)
+        {
+            return View("Index", _context.Movies.Where(m => m.Title.Contains(SearchTitle)).ToList());
         }
     }
 }
