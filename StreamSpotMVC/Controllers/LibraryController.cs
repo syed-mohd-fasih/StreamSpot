@@ -1,15 +1,26 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Identity.Client;
 using StreamSpotMVC.Data;
-using StreamSpotMVC.Models;
 using StreamSpotMVC.Services;
 
 namespace StreamSpotMVC.Controllers
 {
     public class LibraryController : Controller
     {
-        ApplicationDbContext _context;
-        private readonly string _videoDirectory = @"D:\Movies"; // Path to your video directory
+        private readonly ApplicationDbContext _context;
+        private readonly string _videoDirectory = @"D:\Movies";
+        private readonly MoviesDirectoryService _moviesDirectoryService;
+        public static readonly Dictionary<string, string> MimeTypes = new Dictionary<string, string>
+        {
+            { ".mp4", "video/mp4" },
+            { ".webm", "video/webm" },
+            { ".ogv", "video/ogg" },
+            { ".avi", "video/x-msvideo" },
+            { ".mov", "video/quicktime" },
+            { ".wmv", "video/x-ms-wmv" },
+            { ".flv", "video/x-flv" },
+            { ".mkv", "video/x-matroska" },
+            { ".mpeg", "video/mpeg" }
+        };
 
         public LibraryController(ApplicationDbContext context)
         {
@@ -44,8 +55,9 @@ namespace StreamSpotMVC.Controllers
 
             if (System.IO.File.Exists(filePath))
             {
+                var fileExtension = Path.GetExtension(filePath);
                 var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-                return File(fileStream, "video/mp4"); // Adjust MIME type based on your video format
+                return File(fileStream, MimeTypes[fileExtension.ToLowerInvariant()]);
             }
 
             return NotFound();

@@ -44,6 +44,10 @@ namespace StreamSpotMVC.Services
                         );
                         if (movie != null)
                         {
+                            string? videourl = FindVideoUrl(d);
+                            if (videourl != null)
+                                movie.VideoUrl = videourl;
+                            else continue;
                             movies.Add(movie);
                         }
                     }
@@ -58,6 +62,22 @@ namespace StreamSpotMVC.Services
             {
                 return Enumerable.Empty<Movie>();
             }
+        }
+
+        private static string? FindVideoUrl(string directory)
+        {
+            string[] videoFormats = { ".mp4", ".mov", ".mkv", ".webm", ".avi", ".wmv", ".mpeg", ".mpg" };
+
+            foreach(string ext in videoFormats)
+            {
+                string[] files = Directory.GetFiles(directory, "*" + ext);
+                if(files.Length > 0)
+                {
+                    return files[0];
+                }
+            }
+
+            return null;
         }
 
         public static void InitializeDb(ApplicationDbContext context, string moviesDirectory = "D:\\Movies")

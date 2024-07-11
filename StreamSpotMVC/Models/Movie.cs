@@ -1,28 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace StreamSpotMVC.Models
 {
     public class Movie
     {
+        // For Db and page redirects
         public int Id { get; set; }
         public int Year { get; set; }
-        public string Title { get; set; }
-        public List<string> Tags { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; } = string.Empty;
+        public List<string> Tags { get; set; } = new List<string>();
+        public string Description { get; set; } = string.Empty;
         [JsonPropertyName("img")]
-        public string Image { get; set; }
+        public string Image { get; set; } = string.Empty;
         public double Rating { get; set; }
-
-        public Movie()
-        {
-            Id = 0;
-            Year = 0;
-            Title = "";
-            Tags = [];
-            Description = "";
-            Image = "";
-            Rating = 0;
-        }
+        public string VideoUrl { get; set; } = string.Empty;
     }
 }
