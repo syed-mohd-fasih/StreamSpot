@@ -18,15 +18,38 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Playwrite AU VIC', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background-color: #222222;
+    background-image: 
+        radial-gradient( closest-side, rgba(52, 152, 219, 1), /* Main Color (Sky Blue) */
+        rgba(52, 152, 219, 0)), /* Main Color Transparent */
+        radial-gradient( closest-side, rgba(247, 247, 247, 1), /* Secondary Color (Light Gray/White) */
+        rgba(247, 247, 247, 0)), /* Secondary Color Transparent */
+        radial-gradient( closest-side, rgba(26, 188, 156, 1), /* Complementary Color (Teal) */
+        rgba(26, 188, 156, 0)), /* Complementary Color Transparent */
+        radial-gradient( closest-side, rgba(34, 34, 34, 1), /* Background Color (Charcoal) */
+        rgba(34, 34, 34, 0)), /* Background Color Transparent */
+        radial-gradient( closest-side, rgba(255, 193, 7, 1), /* Accent Color (Amber) */
+        rgba(255, 193, 7, 0)); /* Accent Color Transparent */
+
+    background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax, 110vmax 110vmax, 90vmax 90vmax;
+    background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
+    background-repeat: no-repeat;
+    animation: 10s movement linear infinite;
 }
 
-.checked {
-    color: orange;
-}
-
-.fa-star {
-    cursor: pointer;
+body::after {
+    content: '';
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
@@ -39,11 +62,6 @@ for details on configuring this project to bundle and minify static web assets. 
     object-fit:cover;
 }
 
-#movie-video {
-    transition: width 0.5s;
-}
-
-
 .card {
     width: 300px;
 }
@@ -53,96 +71,49 @@ for details on configuring this project to bundle and minify static web assets. 
     box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
 }
 
-a {
-    color: #0366d6;
+.prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-.border-top {
-    border-top: 1px solid #e5e5e5;
-}
-
-.border-bottom {
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-}
-
-
-p {
-    font-family: 'Nunito', sans-serif;
-}
-
-h1 {
-    font-family: 'Nunito', sans-serif;
-}
-
-ul {
-    font-family: 'Nunito', sans-serif;
-}
-
-.footer {
+#home-page-title {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
-    font-family: 'Nunito', sans-serif;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    color: transparent;
+    text-shadow: 0px 0px 1px rgba(255, 255, 255, .6), 0px 4px 4px rgba(0, 0, 0, .05);
+    letter-spacing: .2rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/*Backgrounds*/
-.bg-navbar {
-    background: -webkit-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: -o-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: -moz-linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
-    background: linear-gradient(110deg, #e9a8a6 60%, #252152 60%);
+#home-page-title:hover {
+    transform: scale(1.05);
+    color: white;
+    animation: 3s;
 }
 
-.bg-footer {
-    background: -webkit-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: -o-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: -moz-linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
-    background: linear-gradient(110deg, #252152 60%, #e9a8a6 60%);
+@keyframes movement {
+    0%, 100% {
+        background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax, 110vmax 110vmax, 90vmax 90vmax;
+        background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
+    }
+
+    25% {
+        background-size: 100vmax 100vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 60vmax 60vmax;
+        background-position: -60vmax -90vmax, 50vmax -40vmax, 0vmax -20vmax, -40vmax -20vmax, 40vmax 60vmax;
+    }
+
+    50% {
+        background-size: 80vmax 80vmax, 110vmax 110vmax, 80vmax 80vmax, 60vmax 60vmax, 80vmax 80vmax;
+        background-position: -50vmax -70vmax, 40vmax -30vmax, 10vmax 0vmax, 20vmax 10vmax, 30vmax 70vmax;
+    }
+
+    75% {
+        background-size: 90vmax 90vmax, 90vmax 90vmax, 100vmax 100vmax, 90vmax 90vmax, 70vmax 70vmax;
+        background-position: -50vmax -40vmax, 50vmax -30vmax, 20vmax 0vmax, -10vmax 10vmax, 40vmax 60vmax;
+    }
 }

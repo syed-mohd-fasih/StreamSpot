@@ -8,7 +8,7 @@
         <div class="row g-0">
             <div class="overflow-hidden col-4" id="media-container">
                 <img src="@Model.Image" class="movie-image-container" alt="@Model.Title" id="movie-thumbnail">
-                <video id="movie-video" class="d-none w-100 h-100" controls>
+                <video class="d-none w-100 h-100" controls>
                     <source src="/library/video/@Model.VideoUrl" type="video/mp4">
                     <source src="/library/video/@Model.VideoUrl" type="video/webm">
                     <source src="/library/video/@Model.VideoUrl" type="video/x-msvideo">
@@ -22,7 +22,8 @@
             <div class="col-md-8">
                 <div class="card-body" id="description">
                     <h5 class="card-title">@Model.Title</h5>
-                    <p class="card-text"><small class="text-body-secondary">@Model.Year</small></p>
+                    <p class="card-text mb-0"><small class="text-body-secondary">@Model.Year</small></p>
+                    <p class="card-text"><small class="text-body-secondary">@Model.Language</small></p>
                     <p class="card-text">@String.Join(", ", Model.Tags)</p>
                     <p class="card-text">IMDB Rating: @Model.Rating</p>
                     <p class="card-text">Synopsis: @Model.Description</p>

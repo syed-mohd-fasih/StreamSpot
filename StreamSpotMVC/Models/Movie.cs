@@ -14,5 +14,6 @@ namespace StreamSpotMVC.Models
         public string Image { get; set; } = string.Empty;
         public double Rating { get; set; }
         public string VideoUrl { get; set; } = string.Empty;
+        public string Language {  get; set; } = string.Empty;
     }
 }
