@@ -1,9 +1,30 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 a {
     text-decoration: none;
+}
+
+body {
+    font-family: 'Playwrite AU VIC', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+header, footer, body{
+    font-family: "Playwrite AU VIC", sans-serif;
+    background-color: black;
+    color: white;
+}
+
+.search-bar {
+    border: none;
+    color: teal;
+}
+
+#search-btn {
+    background-color: teal;
 }
 
 @media (min-width: 768px) {
@@ -30,12 +51,18 @@ html {
 
 .card {
     width: 300px;
+    border: none;
+    background-color: rgba(34, 34, 34, 1);
 }
 
 .card:hover {
     transform: scale(1.03);
     transition: transform 0.3s ease;
     box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
+}
+
+.card-body {
+    color: teal;
 }
 
 .prevent-select {
