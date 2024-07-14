@@ -8,7 +8,6 @@ namespace StreamSpotMVC.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly string _videoDirectory = @"D:\Movies";
-        private readonly MoviesDirectoryService _moviesDirectoryService;
         public static readonly Dictionary<string, string> MimeTypes = new Dictionary<string, string>
         {
             { ".mp4", "video/mp4" },
