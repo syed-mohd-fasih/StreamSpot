@@ -1,5 +1,14 @@
 ﻿@model StreamSpotMVC.Models.Movie
 
+<head>
+    <style>
+        .card:hover {
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
 <div>
  <h4>@Model.Title</h4>
     <hr />
@@ -8,7 +17,7 @@
         <div class="row g-0">
             <div class="overflow-hidden col-4" id="media-container">
                 <img src="@Model.Image" class="movie-image-container" alt="@Model.Title" id="movie-thumbnail">
-                <video class="d-none w-100 h-100" controls>
+                <video id="movie-video" class="d-none w-100 h-100" controls>
                     <source src="/library/video/@Model.VideoUrl" type="video/mp4">
                     <source src="/library/video/@Model.VideoUrl" type="video/webm">
                     <source src="/library/video/@Model.VideoUrl" type="video/x-msvideo">
