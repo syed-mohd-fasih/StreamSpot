@@ -65,6 +65,10 @@ namespace StreamSpotMVC.Controllers
         // Only Search by title
         public IActionResult SearchResult(string SearchTitle)
         {
+            if(SearchTitle == null || SearchTitle == "")
+            {
+                return View("Index");
+            }
             return View("Index", _context.Movies.Where(m => m.Title.Contains(SearchTitle)).ToList());
         }
     }
