@@ -15,37 +15,73 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC:wght@100..400&display=swap" rel="stylesheet">
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+
+    <style>
+        body {
+            font-family: 'Playwrite AU VIC', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            background-color: #222222;
+            background-image: radial-gradient( closest-side, rgba(52, 152, 219, 1), /* Main Color (Sky Blue) */
+            rgba(52, 152, 219, 0)), /* Main Color Transparent */
+            radial-gradient( closest-side, rgba(247, 247, 247, 1), /* Secondary Color (Light Gray/White) */
+            rgba(247, 247, 247, 0)), /* Secondary Color Transparent */
+            radial-gradient( closest-side, rgba(26, 188, 156, 1), /* Complementary Color (Teal) */
+            rgba(26, 188, 156, 0)), /* Complementary Color Transparent */
+            radial-gradient( closest-side, rgba(34, 34, 34, 1), /* Background Color (Charcoal) */
+            rgba(34, 34, 34, 0)), /* Background Color Transparent */
+            radial-gradient( closest-side, rgba(255, 193, 7, 1), /* Accent Color (Amber) */
+            rgba(255, 193, 7, 0)); /* Accent Color Transparent */
+
+            background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax, 110vmax 110vmax, 90vmax 90vmax;
+            background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
+            background-repeat: no-repeat;
+            animation: 10s movement linear infinite;
+        }
+
+            body::after {
+                content: '';
+                display: block;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+        .home-page-title {
+            z-index: 10;
+            display: flex;
+            font-size: 5rem;
+            text-shadow: 0px 0px 1px rgba(255, 255, 255, .6), 0px 4px 4px rgba(0, 0, 0, .05);
+            letter-spacing: .2rem;
+
+            a {
+                color: white;
+                opacity: 0.5;
+                text-decoration: none;
+                transition: transform 0.3s ease, opacity 0.3s ease;
+            }
+
+        }
+
+        .home-page-title:hover {
+            a {
+                opacity: 1;
+                transform: scale(1.05);
+                animation: 3s;
+            }
+        }
+    </style>
+
 </head>
 <body>
-    @* <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Library" asp-action="Index">Library</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header> *@
-
-        <div id="home-page-title" class="prevent-select m-auto">
-        <p><strong>StreamSpot</strong></p>
+    <div id="" class="prevent-select home-page-title position-absolute start-50 top-50 translate-middle">
+        <a asp-controller="Library" asp-action="Index"><p><strong>StreamSpot</strong></p></a>
         </div>
 
-    @* <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - StreamSpotMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer> *@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

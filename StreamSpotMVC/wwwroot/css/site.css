@@ -17,44 +17,6 @@ html {
   min-height: 100%;
 }
 
-body {
-    font-family: 'Playwrite AU VIC', sans-serif;
-    margin: 0;
-    min-height: 100vh;
-    background-color: #222222;
-    background-image: 
-        radial-gradient( closest-side, rgba(52, 152, 219, 1), /* Main Color (Sky Blue) */
-        rgba(52, 152, 219, 0)), /* Main Color Transparent */
-        radial-gradient( closest-side, rgba(247, 247, 247, 1), /* Secondary Color (Light Gray/White) */
-        rgba(247, 247, 247, 0)), /* Secondary Color Transparent */
-        radial-gradient( closest-side, rgba(26, 188, 156, 1), /* Complementary Color (Teal) */
-        rgba(26, 188, 156, 0)), /* Complementary Color Transparent */
-        radial-gradient( closest-side, rgba(34, 34, 34, 1), /* Background Color (Charcoal) */
-        rgba(34, 34, 34, 0)), /* Background Color Transparent */
-        radial-gradient( closest-side, rgba(255, 193, 7, 1), /* Accent Color (Amber) */
-        rgba(255, 193, 7, 0)); /* Accent Color Transparent */
-
-    background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax, 110vmax 110vmax, 90vmax 90vmax;
-    background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax, -30vmax -10vmax, 50vmax 50vmax;
-    background-repeat: no-repeat;
-    animation: 10s movement linear infinite;
-}
-
-body::after {
-    content: '';
-    display: block;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-}
-
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-/* Provide sufficient contrast against white background */
 .movie-image-container {
     overflow: hidden;
     height: 100%;
@@ -72,28 +34,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .prevent-select {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-}
-
-#home-page-title {
-    position: absolute;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 5rem;
-    color: transparent;
-    text-shadow: 0px 0px 1px rgba(255, 255, 255, .6), 0px 4px 4px rgba(0, 0, 0, .05);
-    letter-spacing: .2rem;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-#home-page-title:hover {
-    transform: scale(1.05);
-    color: white;
-    animation: 3s;
+    user-select: none;
 }
 
 @keyframes movement {
